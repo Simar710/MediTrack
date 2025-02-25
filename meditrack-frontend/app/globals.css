@@ -1,0 +1,30 @@
+/* app/globals.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary-bg-start: #2e3a46; /* Muted slate */
+  --primary-bg-end: #46555e;   /* Muted slate */
+  --accent-color: #90a4ae;     /* Soft blue-gray */
+  --card-bg: #ffffff;
+  --text-color: #2e3a46;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --card-bg: #1e2a33;
+    --text-color: #e0e0e0;
+  }
+}
+
+body {
+  background: linear-gradient(to right, var(--primary-bg-start), var(--primary-bg-end));
+  color: var(--text-color);
+  font-family: 'Inter', sans-serif;
+}
+
+/* Utility for card background */
+.bg-card {
+  background: var(--card-bg);
+}
