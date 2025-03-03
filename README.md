@@ -7,4 +7,4 @@ A Medication Reminder and Prescription Management App
 - **Web Frontend:** Built responsive applications using Next.js, React, and TypeScript for patient registration, prescription tracking, and real‑time notifications.
 - **Mobile Frontend:** Developed a cross‑platform mobile app with Flutter (Dart) featuring push notifications via Firebase Cloud Messaging.
 - **Backend & API:** Engineered secure RESTful APIs using Node.js and Express.js with TypeScript; managed prescription data in PostgreSQL via Prisma ORM.
-- **Cloud & DevOps:** Deployed services on AWS (EC2) and Vercel; integrated CI/CD pipelines with GitHub Actions to ensure high performance and reliability.
+- **Cloud & DevOps:** Deployed services on AWS (EC2); integrated CI/CD pipelines with GitHub Actions to ensure high performance and reliability.
