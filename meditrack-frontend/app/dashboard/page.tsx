@@ -109,6 +109,10 @@ export default function Dashboard() {
   const approved = prescriptions.filter((p) => p.status === "approved").length;
   const rejected = prescriptions.filter((p) => p.status === "rejected").length;
 
+  const pendingPrescriptions = prescriptions.filter(p => p.status === 'pending');
+  const approvedPrescriptions = prescriptions.filter(p => p.status === 'approved');
+  const rejectedPrescriptions = prescriptions.filter(p => p.status === 'rejected');
+
   return (
     /**
      * Body already has the gradient from global.css:
@@ -229,9 +233,9 @@ export default function Dashboard() {
         {profile?.role === "pharmacist" && (
           <div className="mt-8">
             <h3 className="text-2xl font-semibold text-indigo-500 mb-4">Pending Prescriptions</h3>
-            {prescriptions.length > 0 ? (
+            {pendingPrescriptions.length > 0 ? (
               <ul className="space-y-4">
-                {prescriptions.map((prescription) => (
+                {pendingPrescriptions.map((prescription) => (
                   <li
                     key={prescription.id}
                     className="p-4 rounded-md shadow border border-[var(--accent-color)]/30 bg-card"
@@ -281,7 +285,69 @@ export default function Dashboard() {
                 ))}
               </ul>
             ) : (
-              <p>No prescriptions available.</p>
+              <p>No pending prescriptions.</p>
+            )}
+
+            <h3 className="text-2xl font-semibold text-indigo-500 mb-4">Approved Prescriptions</h3>
+            {approvedPrescriptions.length > 0 ? (
+              <ul className="space-y-4">
+                {approvedPrescriptions.map((prescription) => (
+                  <li
+                    key={prescription.id}
+                    className="p-4 rounded-md shadow border border-[var(--accent-color)]/30 bg-card"
+                  >
+                    <p className="font-semibold">
+                      <span className="text-indigo-600 font-bold">Patient:</span>{" "}
+                      {prescription.patient?.name || "Unknown"}
+                      <span className="text-gray-600 text-sm"> (ID: {prescription.patientId})</span>
+                    </p>
+                    <div className="mt-2">
+                      <p><strong>Medicine:</strong> {prescription.name}</p>
+                      <p><strong>Dosage:</strong> {prescription.dosage}</p>
+                    </div>
+                    <p className="mt-2">
+                      <strong>Status:</strong> {prescription.status}
+                    </p>
+                    <p className="text-gray-600 text-sm">
+                      <strong>Created At:</strong>{" "}
+                      {new Date(prescription.createdAt).toLocaleString()}
+                    </p>
+                  </li>
+                ))}
+              </ul>
+            ) : (
+              <p>No approved prescriptions.</p>
+            )}
+
+            <h3 className="text-2xl font-semibold text-indigo-500 mb-4">Rejected Prescriptions</h3>
+            {rejectedPrescriptions.length > 0 ? (
+              <ul className="space-y-4">
+                {rejectedPrescriptions.map((prescription) => (
+                  <li
+                    key={prescription.id}
+                    className="p-4 rounded-md shadow border border-[var(--accent-color)]/30 bg-card"
+                  >
+                    <p className="font-semibold">
+                      <span className="text-indigo-600 font-bold">Patient:</span>{" "}
+                      {prescription.patient?.name || "Unknown"}
+                      <span className="text-gray-600 text-sm"> (ID: {prescription.patientId})</span>
+                    </p>
+                    <div className="mt-2">
+                      <p><strong>Medicine:</strong> {prescription.name}</p>
+                      <p><strong>Dosage:</strong> {prescription.dosage}</p>
+                    </div>
+                    <p className="mt-2">
+                      <strong>Status:</strong> {prescription.status}
+                    </p>
+                    <p className="text-gray-600 text-sm">
+                      <strong>Created At:</strong>{" "}
+                      {new Date(prescription.createdAt).toLocaleString()}
+                    </p>
+                  </li>
+                ))}
+              </ul>
+            ) : (
+              <p>No rejected prescriptions.</p>
             )}
           </div>
         )}
