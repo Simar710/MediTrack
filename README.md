@@ -77,8 +77,8 @@ MediTrack is a full-stack healthtech solution designed to meet the needs of the 
    npm run dev
    ```
 
-6. Run the mobile app (in progress):
-   - Open the `mobile` directory in your Flutter IDE.
+6. Run the mobile app:
+   - Open the `meditrack-mobile` directory in your Flutter IDE.
    - Run the app on an emulator or physical device.
 
 ## Project Structure
